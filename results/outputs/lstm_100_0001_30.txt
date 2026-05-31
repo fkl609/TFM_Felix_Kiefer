@@ -1,0 +1,206 @@
+a_mi_burro
+Expected:  ccffgaaagfgafccfffgaaagfegffCCCCCCCagfgafagfgaf
+Predicted: ccffgaaagfgafccfffgaaagfegffCCCCCCCagfgafagffga
+Accuracy:  0.9143
+
+ahora_que_vamos_despacio
+Expected:  egbCDCbabegbCDCbabbCbCbCbaagaabababaggfgfgbgbgfe
+Predicted: egbCDCbabegbCDCbabbCbCbCbaagaabababaggfgfgbgbgfe
+Accuracy:  1.0000
+
+al_pasar_la_barca
+Expected:  efgCaadefaggefgCbbDDCbCCefgCaadefagefgCbbDDCbC
+Predicted: efgCaadefaggefgCbbDDCbCCefgCaadefagefgCbbDDCCb
+Accuracy:  0.9412
+
+altaluna
+Expected:  gCCCCCbDCbagGGgagfeggabCgCCCCCbDCbagGGgagfeggabC
+Predicted: gCCCCCbDCbagGGgagfeggabCgCCCCCbDCbagGGgagfeggabC
+Accuracy:  1.0000
+
+arre_borriquito
+Expected:  CCCECCCDEFGGAGFEDCbagGECCCCECCCDEFGAGFEDCbagGC
+Predicted: CCCECCCDEFGGAGFEDCbagGECCCCECCCDEFGAGFEDCbaggG
+Accuracy:  0.9412
+
+ay_del_chiquirritin
+Expected:  ffffffgfefgfffefgecbgeedcCCCCCcdeefgaegfaababCafCafgecbgeedcbCbegf
+Predicted: ffffffgfefgfffefgecbgeedcCCCCCcdeefgaegfaababCafCafgecbgeedcbCbegf
+Accuracy:  1.0000
+
+barco_chiquitito
+Expected:  DDCbbbbabCaCCbaaaagabgDDDGbbbCDFEEGFEDDDDDDDDDDFEDCb
+Predicted: DDCbbbbabCaCCbaaaagabgDDDGbbbCDFEEGFEDDDDDDDDDDFEDCb
+Accuracy:  1.0000
+
+campana_sobre_campana
+Expected:  ffffefgecggabagagfffffefgecggabagagfaCCDCbDCCDCDEFaDCbagfabagfCDCbaCCbgCbagfabagfCDCbaCCbgCbagfaCCDCbDCCDCDEFaDCbagf
+Predicted: ffffefgecggabagagfaCCDCbDCCDCDEFaDCbagfabagfCDCbaCCbgCbagfabagfCDCbaCCbgCbagfaCCDCbDCCDCDEFaDCbagfabagfCDCbaCCbgCbag
+Accuracy:  0.1635
+
+campanita
+Expected:  ccggaagffeedcccggaagffeedcggffeedggffeedccggaagffeedcccggaagffeedc
+Predicted: ccggaagffeedcccggaagffeedcggffeedggffeedccggaagffeedcccggaagffeedc
+Accuracy:  1.0000
+
+cinco_lobitos
+Expected:  DDFDDFFDaaDDFEEEabCDDDDFDFFDaaDDDEEEabCD
+Predicted: DDFDDFFDaaDDFEEEabCDDDDFDFFDaaDDDEEEabCD
+Accuracy:  1.0000
+
+cocherit
+Expected:  eceggggafaggfegegffedafaggfeeceggggafaggfegegffedafaggfecfffaffcfffaffcffcfcffcfcffgf
+Predicted: eceggggafaggfegegffedafaggfecfffaffcfffaffcffcfcffcfcffgefgfegggeeegeeeecacagbbbCCaga
+Accuracy:  0.3151
+
+copatata
+Expected:  dgggaggdfgggagggggggaggefgggaggefgefgefgfedc
+Predicted: dgggaggdfgggagggggggaggefgggaggefgefgefgfedc
+Accuracy:  1.0000
+
+debboton
+Expected:  cdefgggabCagggfgafeeedefdccc
+Predicted: cdefgggabCagggfgafeeedefdccc
+Accuracy:  1.0000
+
+diez_perritos
+Expected:  gggCbagegggCbageefgfedggefgfedcccccc
+Predicted: gggCbagegggCbageefgfedggefgfedcccccc
+Accuracy:  1.0000
+
+don_meliton
+Expected:  gggeegggagffedddfffgegggeeegggaaCbagagfedc
+Predicted: gggeegggagffedddfffgegggeeegggaaCbagagfefb
+Accuracy:  0.9333
+
+donde_estan_las_llaves
+Expected:  efgCbbaaggabCgefgCbbaaggabCgC
+Predicted: efgCbbaaggabCgefgCbbaaggabCge
+Accuracy:  0.9412
+
+donde_vas_alfonso_doce
+Expected:  cfaacfaagabCbaggabbagaagfgbagf
+Predicted: cfaacfaagabCbaggabbagaagfgbagg
+Accuracy:  0.9444
+
+dongato
+Expected:  afafafedbgbgbCaagfgaaaababafed
+Predicted: afafafedbgbgbCaagfgaaaababafgf
+Accuracy:  0.8889
+
+el_barquito_chiquitito
+Expected:  eaabbCCCbDCbCaeaabbCCCbDCbCaaDDDDaCCCCabbbDCba
+Predicted: eaabbCCCbDCbCaeDDDDaCCCCCbbbDDCbgCCbagaadeffab
+Accuracy:  0.2941
+
+eran_tres_alpinos
+Expected:  ggagccggggCabbggagddbbbbCbagggagagceeeefedc
+Predicted: ggagccggggCabbggagddbbbbCbagggagagceeeefgfd
+Accuracy:  0.9032
+
+estaba_una_pastora
+Expected:  ggCbageefagfgeggCbagegggggcc
+Predicted: ggCbageefagfgeggCbagegggggcc
+Accuracy:  1.0000
+
+fumfum2
+Expected:  agaCbageagaagaCbageagaggCCCbCCbbCCbbCbCDCbageagaCbageaga
+Predicted: agaCbageagaagaCbageagaggCCCbCCbbCCbbCbCDCbageagaCbageaga
+Accuracy:  1.0000
+
+hacia_belen_va_una_burra
+Expected:  cffffaCbaggfefgagfefggfefgagfefggabDCbagfcffffaCbaggfefgagfefggfefgagfefggabDCbagfaaCCgaaaCCgaffbbgaffggefaaCCgaaaCCgaffbbgaffggef
+Predicted: cffffaCbaggfefgagfefggfefgagfefggaeDCbagfaaCCbCbaCCCaaDDDaaaffbCCCbCCCbbggffggggffggggggggeegggagggdggggaggefeggagggagagegegaggeag
+Accuracy:  0.3390
+
+happy_bday_to_you
+Expected:  ccdcfeccdcgfccCafedbbafgf
+Predicted: ccdcfeccdcgfccCafedbbafgc
+Accuracy:  0.9231
+
+la_cucaracha
+Expected:  gggCEgggCECCbbaaggggbDgggbDGAGFEDCggCCEEGEGAGFEGFDggbbDDFDGAGFEDEC
+Predicted: gggCEgggCECCbbaaggggbDgggbDGAGFEDCggCCEEGEGAGFEGFDggbbDDFDGAGFEDEE
+Accuracy:  0.9815
+
+la_rana_cucu
+Expected:  gCgagfgegCgagfgegCgagfgegCgagfgegCgagfgegCgagfgegCgagfgegCgagfgegCgagfgegCgagfgegCefedc
+Predicted: gCgagfgegCgagfgegCgagfgegCgagfgegCgagfgegCgagfgegCgagfgegCgagfgegCgagfgegCgagfgegCgagfg
+Accuracy:  0.9333
+
+la_viudita_del_conde_laurel
+Expected:  gCCDCbgDDEDCEFabagCbabC
+Predicted: gCCDCbgDDEDCEFabagCbbaC
+Accuracy:  0.8182
+
+luna_lunera_cascabelera_2
+Expected:  geagegeageeggeagegeagegeagegeagegeagegeagegeagegeagegeagegeage
+Predicted: geagegeageeggeagegeagegeagegeagegeagegeagegeagegeagegeagegeage
+Accuracy:  1.0000
+
+mambru2
+Expected:  eaaabCaeeeeeefeceaagabbCbagfeefddecCbCDba
+Predicted: eaaabCaeeeeeefeceaagabbCbagfeefddecCbCDbC
+Accuracy:  0.9655
+
+mi_granja
+Expected:  ggggggfefgfeffffffedefedgagfedcgagfedc
+Predicted: ggggggfefgfeffffffedefedgagfedcgagfefe
+Accuracy:  0.9231
+
+mibarba
+Expected:  gCggfefddgbggfdeccgCggfefddgbggfdecc
+Predicted: gCggfefddgbggfdeccgCggfefddgbggfdecc
+Accuracy:  1.0000
+
+o_peuple_fidele
+Expected:  ggdgadbabCbaggfebfgabfeddDDCbCbabgafedggfgagdbbabCbabCbagfgCbagg
+Predicted: ggdgadbabCbaggfebfgabfeddDDCbCbabgafedggfgagdbbabCbabCbagfgCbagg
+Accuracy:  1.0000
+
+palmas
+Expected:  ffaffaaaafcccfffafcccdef
+Predicted: ffaffaaaafcccfffafcccdef
+Accuracy:  1.0000
+
+pase_misi_pase_misa
+Expected:  aaaggaaagaagggaagefggeaggefggeag
+Predicted: aaaggaaagaagggaagefggeaggefggeag
+Accuracy:  1.0000
+
+pastora
+Expected:  bbgCbbgbbEGFFCCCDEDCbbEgCbbgbbgCbbgbbEGFFCCCDEDCbbEgCbbg
+Predicted: bbgCbbgbbEGFFCCCDEDCbbEgCbbgbbgCbbgbbEGFFCCCDEDCbbEgCbbg
+Accuracy:  1.0000
+
+patiocas
+Expected:  dgggbggbgbgddgggbggddefgdgagdgggagdggggaaaddefgbbgbbgbbCbagaaafaafaabagfgbbgbbgbbCbagaaafaafaabagfg
+Predicted: dgggbggbgbgddgggbggddefgdgagdgggagdggggaaaddefgbbgbbgbbCbagaaafaafaabagfgbbgbbgbbCbagaaafaafaabagfg
+Accuracy:  1.0000
+
+pavito
+Expected:  cffffcffcfffefgefgggfeeeeeedef
+Predicted: cffffcffcfffefgefgggfeeeeeedcc
+Accuracy:  0.8889
+
+pimpon
+Expected:  gCgefgggCgefggccefggagfedc
+Predicted: gCgefgggCgefggccefggagfeeg
+Accuracy:  0.8571
+
+quellueva
+Expected:  eggaggegggaggegggaggegggaggegegegagegeggaggegggaggegggaggegggaggegegegagegegfedc
+Predicted: eggaggegggaggegggaggegggaggegggaggegggaggegggaggegggaggegggaggegggaggegggaggeggg
+Accuracy:  0.5147
+
+tengomuneca
+Expected:  gggagecegagfffgfedefdc
+Predicted: gggagecegagfffgfedefeg
+Accuracy:  0.8000
+
+un_elefante
+Expected:  ggfeegggfeegggagfefdffeddfffeddggggfedec
+Predicted: ggfeegggfeegggagfefdffeddfffeddggggfedec
+Accuracy:  1.0000
+
+TOTAL ACCURACY: 0.8040

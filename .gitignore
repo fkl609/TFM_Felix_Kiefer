@@ -1,0 +1,27 @@
+# ==============================================================================
+# GITIGNORE TEMPLATE - TFM PREDICCIÓN MUSICAL (UNIVERSIDAD DE CANTABRIA)
+# ==============================================================================
+
+# --- Archivos del Sistema ---
+.DS_Store
+Thumbs.db
+
+# --- Python y Caché ---
+__pycache__/
+*.py[cod]
+
+# --- Entornos de Desarrollo (Spyder) ---
+.spyderproject/
+.spyproject/
+spyder_py_autosave/
+
+# --- Datasets y Archivos de Datos Pesados ---
+dataset/input.txt
+
+# --- Modelos, Pesos y Binarios ---
+models/
+*.keras
+*.pkl
+
+# --- Resultados Locales de Optimización ---
+tuner_results/

@@ -1,0 +1,2 @@
+hidden_size,seq_length,learning_rate,batch_size,epochs,input_size,accuracy
+200,12,0.01,15,500,12,0.2998
