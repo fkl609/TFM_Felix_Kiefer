@@ -2,22 +2,29 @@
 Modelo Vanilla RNN a nivel de carácter.
 Arquitectura adaptada para predicción simultánea (Multi-head): 12 notas de entrada -> 4 notas de salida directa.
 """
+import os
 import numpy as np
 import pickle
 import matplotlib.pyplot as plt
 import optuna
+import time
 from optuna.samplers import TPESampler
 
 # ==========================================
-# 0. CONFIGURACIÓN DE REPRODUCIBILIDAD
+# 0. CONFIGURACIÓN DE REPRODUCIBILIDAD Y RUTAS
 # ==========================================
-SEED = 31
+SEED = 13
 np.random.seed(SEED)
+
+MODELS_DIR = '../models'
+PLOTS_DIR = '../results/plots'
+os.makedirs(MODELS_DIR, exist_ok=True)
+os.makedirs(PLOTS_DIR, exist_ok=True)
 
 # ==========================================
 # 1. CARGA DE DATOS
 # ==========================================
-with open('../dataset/input.txt', 'r') as f:
+with open('../dataset/input.txt', 'r', encoding='utf-8') as f:
     lines = f.readlines()
     
 songs = [line.strip() for line in lines if line.strip()]
@@ -52,9 +59,11 @@ def lossFun(inputs, targets, hprev, Wxh, Whh, Whys, bh, bys):
     # 2. PREDICCIÓN SIMULTÁNEA: Aplicación de las 4 cabezas (Whys) sobre el estado oculto final
     for i in range(output_length):
         y = np.dot(Whys[i], h_final) + bys[i]
-        p = np.exp(y) / np.sum(np.exp(y))
+        # Corrección de estabilidad numérica para Softmax
+        y_shift = y - np.max(y) 
+        p = np.exp(y_shift) / np.sum(np.exp(y_shift))
         ps[i] = p
-        loss += -np.log(p[targets[i], 0])
+        loss += -np.log(p[targets[i], 0] + 1e-8)
     
     # 3. BACKWARD PASS
     dWxh = np.zeros_like(Wxh)
@@ -93,17 +102,16 @@ def lossFun(inputs, targets, hprev, Wxh, Whh, Whys, bh, bys):
 # 4. OPTIMIZACIÓN CON OPTUNA
 # ==========================================
 def objective(trial):
+    # Hiperparámetros a explorar
     hidden_size = trial.suggest_int('hidden_size', 50, 200, step=25) 
-    # Exploración discreta de la tasa de aprendizaje para claridad en la memoria del TFM
     learning_rate = trial.suggest_categorical('learning_rate', [1e-3, 5e-3, 1e-2, 5e-2, 1e-1])
     batch_size = trial.suggest_categorical('batch_size', [15, 30, 60])
-    epochs_trial = 50 
-
-    # Inicialización de pesos y sesgos
+    epochs_trial = 50 # Épocas de prueba
+    
+    # Inicialización de las matrices de pesos
     Wxh = np.random.randn(hidden_size, vocab_size)*0.01 
     Whh = np.random.randn(hidden_size, hidden_size)*0.01 
     bh = np.zeros((hidden_size, 1)) 
-    
     Whys = [np.random.randn(vocab_size, hidden_size)*0.01 for _ in range(output_length)]
     bys = [np.zeros((vocab_size, 1)) for _ in range(output_length)]
 
@@ -125,7 +133,6 @@ def objective(trial):
         for current_song in songs:
             hprev = np.zeros((hidden_size, 1))
             
-            # Extracción iterativa de bloques (12 contexto + 4 predicción)
             for p in range(len(current_song) - seq_length - output_length + 1):
                 inputs = [char_to_ix[ch] for ch in current_song[p : p+seq_length]]
                 targets = [char_to_ix[ch] for ch in current_song[p+seq_length : p+seq_length+output_length]]
@@ -144,11 +151,11 @@ def objective(trial):
                 batch_counter += 1
                 
                 if batch_counter >= batch_size:
-                    # Agrupación de parámetros y gradientes para actualización por lotes (Adagrad)
                     all_params = [Wxh, Whh, bh] + Whys + bys
                     all_grads = [Acc_dWxh, Acc_dWhh, Acc_dbh] + Acc_dWhys + Acc_dbys
                     all_mems = [mWxh, mWhh, mbh] + mWhys + mbys
                     
+                    # Adagrad
                     for i in range(len(all_params)):
                         dparam = all_grads[i] / batch_size
                         all_mems[i] += dparam * dparam
@@ -169,7 +176,6 @@ def objective(trial):
 # 5. BUCLE PRINCIPAL (MAIN)
 # ==========================================
 if __name__ == "__main__":
-    # Configuración del optimizador bayesiano con semilla fija
     sampler = TPESampler(seed=SEED)
     study = optuna.create_study(direction='minimize', sampler=sampler)
     study.optimize(objective, n_trials=15)
@@ -183,7 +189,6 @@ if __name__ == "__main__":
     print("--- OPTIMIZACIÓN FINALIZADA ---")
     print(f"Entrenando modelo final con -> H_Size: {hidden_size}, LR: {learning_rate}, Batch: {batch_size}")
 
-    # Reinicio de semilla para garantizar condiciones idénticas en el entrenamiento final
     np.random.seed(SEED) 
     Wxh = np.random.randn(hidden_size, vocab_size)*0.01 
     Whh = np.random.randn(hidden_size, hidden_size)*0.01 
@@ -202,8 +207,13 @@ if __name__ == "__main__":
     batch_counter = 0
     loss_history = []
     epoch_history = []
+    
+    # Recolección de tiempos
+    epoch_times = []
+    train_start_time = time.time()
 
     for epoch in range(epochs_final):
+        epoch_start_time = time.time()
         epoch_loss = 0
         steps = 0
         
@@ -243,23 +253,19 @@ if __name__ == "__main__":
                     batch_counter = 0
         
         smooth_loss = epoch_loss / steps if steps > 0 else 0
+        epoch_duration = time.time() - epoch_start_time
+        epoch_times.append(epoch_duration)
         
         if epoch % 10 == 0:
-            print('Epoch %d, loss: %f' % (epoch, smooth_loss)) 
+            print('Epoch %d/%d, loss: %f, time: %.2fs' % (epoch, epochs_final, smooth_loss, epoch_duration)) 
             epoch_history.append(epoch)
             loss_history.append(smooth_loss)
 
-    # Visualización y exportación
-    plt.plot(epoch_history, loss_history)
-    plt.xlabel("Epochs")
-    plt.ylabel("Loss")
-    
-    # Sustitución de puntos decimales para evitar conflictos en el sistema de archivos
-    lr_str = str(learning_rate).replace('.', '') 
-    plt.savefig('../results/plots/rnn_opt_%d_%s_%d.png' % (hidden_size, lr_str, batch_size)) 
-    plt.show()
+    total_train_time = time.time() - train_start_time
+    avg_epoch_time = sum(epoch_times) / len(epoch_times)
+    print(f"\nEntrenamiento Finalizado. Tiempo Total: {total_train_time:.2f}s | Tiempo Medio/Epoch: {avg_epoch_time:.4f}s")
 
-    # Estructuración de datos para serialización del modelo completo
+    # Guardado del modelo y datos de entrenamiento
     model_data = {
         'Wxh': Wxh,
         'Whh': Whh,
@@ -274,8 +280,28 @@ if __name__ == "__main__":
         'output_length': output_length,
         'learning_rate': learning_rate,
         'batch_size': batch_size,
-        'epochs': epochs_final
+        'epochs': epochs_final,
+        'epoch_times': epoch_times,
+        'total_train_time': total_train_time,
+        'avg_epoch_time': avg_epoch_time
     }
+    
+    lr_str = str(learning_rate).replace('.', '') 
+    base_filename = f'rnn_opt_{hidden_size}_{lr_str}_{batch_size}'
 
-    with open('../models/rnn_model_opt_%d_%s_%d.pkl' % (hidden_size, lr_str, batch_size), 'wb') as f: 
+    # Visualización y exportación
+    plt.figure()
+    plt.plot(epoch_history, loss_history, label='Training Loss', color='tab:blue')
+    plt.xlabel("Epochs", fontweight='bold')
+    plt.ylabel("Loss", fontweight='bold')
+    plt.title(f"Curva de Aprendizaje (Vanilla RNN)\nH_Size: {hidden_size} | LR: {learning_rate} | Batch: {batch_size}", fontweight='bold')
+    plt.grid(True, linestyle=':', alpha=0.6)
+    plt.legend()
+    plt.tight_layout()
+    plt.savefig(os.path.join(PLOTS_DIR, f"{base_filename}.png"), dpi=300)
+    plt.close()
+
+    with open(os.path.join(MODELS_DIR, f"{base_filename}.pkl"), 'wb') as f: 
         pickle.dump(model_data, f)
+    
+    print(f"\nModelo, gráfica y metadatos guardados correctamente bajo el prefijo: '{base_filename}'")

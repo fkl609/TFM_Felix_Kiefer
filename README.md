@@ -2,14 +2,14 @@
 
 Este repositorio contiene el código fuente asociado al Trabajo de Fin de Máster (Máster en Ciencia de Datos, Universidad de Cantabria). 
 
-El proyecto aborda el modelado secuencial simbólico para aprender y reproducir melodías (notación ABC) mediante redes neuronales recurrentes. Se compara una arquitectura Vanilla RNN frente a una LSTM (Encoder-Decoder) utilizando un enfoque de predicción simultánea multicabeza.
+El proyecto aborda el modelado secuencial simbólico para memorizar y reproducir melodías (notación ABC) mediante redes neuronales recurrentes. Se compara una arquitectura Vanilla RNN frente a una LSTM (Encoder-Decoder) utilizando un enfoque de predicción simultánea multicabeza.
 
 ## Estructura del Proyecto
 
-* **`dataset/`**: Archivos de origen XML (canciones infantiles) y script (`transf_songs.py`) para la extracción de las notas en secuencias de texto continuo (`input.txt`).
-* **`model_scripts/`**: Código fuente para la optimización de hiperparámetros (Optuna y Keras Tuner) y el entrenamiento de los modelos (`rnn.py` y  `lstm.py`).
+* **`dataset/`**: Directorio `xml_songs/` con archivos de origen XML (canciones infantiles) y script (`transf_songs.py`) para la extracción de las notas en secuencias de texto continuo (`input.txt` y `song_names.txt`).
+* **`model_scripts/`**: Código fuente para la optimización de hiperparámetros (Optuna y Keras Tuner) y el entrenamiento de los modelos (`rnn.py` y `lstm.py`).
 * **`models/`**: Directorio de almacenamiento para los pesos guardados (`.keras`) y diccionarios de metadatos (`.pkl`).
-* **`results/`**: Scripts de inferencia (`gen_songs_rnn.py`, `gen_songs_lstm.py`). Incluye las carpetas `outputs/` (métricas por carácter y secuencias generadas en `.txt` y `.csv`) y `plots/` (curvas de pérdida).
+* **`results/`**: Scripts de inferencia (`gen_songs_rnn.py`, `gen_songs_lstm.py`) y archivos de métricas globales (`results_lstm.csv`, `results_rnn.csv`). Incluye las carpetas `outputs/` (secuencias generadas en `.txt` y métricas por carácter) y `plots/` (curvas de pérdida y de evaluación).
 
 ## Entorno y Requisitos
 
@@ -32,4 +32,4 @@ pip install -r requirements.txt
 
 1. **Preprocesamiento:** Ejecutar `transf_songs.py` dentro de la carpeta `dataset/` para transformar los XML en el corpus de entrenamiento `input.txt` y extraer `song_names.txt`. *(Opcional, ya que los archivos ya han sido generados)*
 2. **Entrenamiento y Optimización:** Ejecutar los scripts en `model_scripts/`. Estos realizarán la búsqueda de hiperparámetros, entrenarán el modelo óptimo y guardarán los artefactos en `models/` y las curvas en `results/plots/`.
-3. **Inferencia y Evaluación:** Ejecutar los scripts de la carpeta `results/`. Buscarán automáticamente el último modelo entrenado, generarán las melodías iterando sobre el bloque predictor y exportarán las métricas de precisión a `results/outputs/`.
+3. **Inferencia y Evaluación:** Ejecutar los scripts de la carpeta `results/.` Buscarán automáticamente el último modelo entrenado, generarán las melodías iterando sobre el bloque predictor y exportarán las secuencias a `results/outputs/`, los gráficos a `results/plots/` y las métricas tabulares a los `.csv` raíz.

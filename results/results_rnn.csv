@@ -1,2 +1,2 @@
-hidden_size,seq_length,learning_rate,batch_size,epochs,input_size,accuracy
-200,12,0.01,15,500,12,0.2998
+hidden_size,lr,batch,acc_ar,acc_gui,lev_ar,lev_gui,time_note_ar,time_note_gui,total_train_time,avg_epoch_time
+200,0.01,60,0.2998,0.4702,0.6152,0.5116,0.000130,0.000210,1955.34,3.9107

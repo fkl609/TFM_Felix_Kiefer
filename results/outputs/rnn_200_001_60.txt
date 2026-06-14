@@ -1,0 +1,254 @@
+a_mi_burro
+Expected:   ccffgaaagfgafccfffgaaagfegffCCCCCCCagfgafagfgaf
+Pred (AR):  ccffgaaagfgafdcfgegegfegededggadgfdgedggfggegef
+Pred (GUI): ccffgaaagfgafdcffegaffefegageffeCDCbfCCbgagfgag
+Acc (AR/GUI): 0.2857 / 0.4571 | Lev: 0.6571 / 0.5143
+
+ahora_que_vamos_despacio
+Expected:   egbCDCbabegbCDCbabbCbCbCbaagaabababaggfgfgbgbgfe
+Pred (AR):  egbCDCbabegbCDCbCbbagbbabagabagabagbbgbbbbbbbbbb
+Pred (GUI): egbCDCbabegbCDCbCbbagafababafggggaagbgbbbbbgbgfe
+Acc (AR/GUI): 0.4444 / 0.4444 | Lev: 0.5000 / 0.5000
+
+al_pasar_la_barca
+Expected:   efgCaadefaggefgCbbDDCbCCefgCaadefagefgCbbDDCbC
+Pred (AR):  efgCaadefaggbfgebdgbgfebggabaagagagegegegfgbga
+Pred (GUI): efgCaadefaggbfgebbabebCbedCfCCDFfageffgCbgabba
+Acc (AR/GUI): 0.2353 / 0.4118 | Lev: 0.7059 / 0.5588
+
+altaluna
+Expected:   gCCCCCbDCbagGGgagfeggabCgCCCCCbDCbagGGgagfeggabC
+Pred (AR):  gCCCCCbDCbagGGgagDgggaeagggegagfefggffgeefeeddce
+Pred (GUI): gCCCCCbDCbagGGgagDgggagegageCCCCbDDCGGgagDgggage
+Acc (AR/GUI): 0.3611 / 0.5278 | Lev: 0.6389 / 0.4167
+
+arre_borriquito
+Expected:   CCCECCCDEFGGAGFEDCbagGECCCCECCCDEFGAGFEDCbagGC
+Pred (AR):  CCCECCCDEFGGAGFEFagagagagbbDbbbGAGFGDCbECCEDGF
+Pred (GUI): CCCECCCDEFGGAGFEFagagGDaCbCEEbaDEECFAGEEFDgaba
+Acc (AR/GUI): 0.2353 / 0.3824 | Lev: 0.6765 / 0.5588
+
+ay_del_chiquirritin
+Expected:   ffffffgfefgfffefgecbgeedcCCCCCcdeefgaegfaababCafCafgecbgeedcbCbegf
+Pred (AR):  ffffffgfefgfefefefcfffagfffcdccccffffffcdcdggfggfddcfggfgffdedcdgf
+Pred (GUI): ffffffgfefgfefefeffffgagccgfgededcdgaeagbagabbgffabaefagagfabagadd
+Acc (AR/GUI): 0.1481 / 0.2778 | Lev: 0.7963 / 0.7037
+
+barco_chiquitito
+Expected:   DDCbbbbabCaCCbaaaagabgDDDGbbbCDFEEGFEDDDDDDDDDDFEDCb
+Pred (AR):  DDCbbbbabCaCCbaaaCCDagfbbagafgagfgbbCgfgfcCgafefbagb
+Pred (GUI): DDCbbbbabCaCCbaaaCCDagafbabCbCCbbDCbEDDDDDDFDDDFFEFC
+Acc (AR/GUI): 0.1750 / 0.5000 | Lev: 0.8250 / 0.4750
+
+campana_sobre_campana
+Expected:   ffffefgecggabagagfffffefgecggabagagfaCCDCbDCCDCDEFaDCbagfabagfCDCbaCCbgCbagfabagfCDCbaCCbgCbagfaCCDCbDCCDCDEFaDCbagf
+Pred (AR):  ffffefgecggabagagfebbDgbbCbCbCgedCfCbCDCbaCbCgCgbCgbagfbbagebggbbDabbbbabCbCbgCbbCbCgCbbCgCbbgbbgbbgbagaggfagegggagf
+Pred (GUI): ffffefgecggabagagfebefebgfgegfgggagfgdedgDDCbDCCagaDFDDabagaagfabagCCfggbagaeagfbagCbDCCagCfCbgfgfgaCDCbCCCDFDDCbaCD
+Acc (AR/GUI): 0.2212 / 0.4038 | Lev: 0.6442 / 0.4615
+
+campanita
+Expected:   ccggaagffeedcccggaagffeedcggffeedggffeedccggaagffeedcccggaagffeedc
+Pred (AR):  ccggaagffeedcccggaaaffegdccffeagfabdfedgbbbgbgbagddggaCCbgaabagbgg
+Pred (GUI): ccggaagffeedcccggaaaffdgdcccfeegdcccfeedcccfaafgfddfcccggaaaffdgdc
+Acc (AR/GUI): 0.3148 / 0.6296 | Lev: 0.6111 / 0.3704
+
+cinco_lobitos
+Expected:   DDFDDFFDaaDDFEEEabCDDDDFDFFDaaDDDEEEabCD
+Pred (AR):  DDFDDFFDaaDDFEEEEFDFbDagagDagagaagCggagb
+Pred (GUI): DDFDDFFDaaDDFEEEEFDFbbDbGFEDCgagDEEGEFEF
+Acc (AR/GUI): 0.2143 / 0.3571 | Lev: 0.7143 / 0.6429
+
+cocherit
+Expected:   eceggggafaggfegegffedafaggfeeceggggafaggfegegffedafaggfecfffaffcfffaffcffcfcffcfcffgf
+Pred (AR):  eceggggafaggfegegeedefgaefgfgeeggfgefdgggegegfddccgfgfddgffgeddggggededeggggeeddggdgb
+Pred (GUI): eceggggafaggfegegeededcagffebggeCgaggfegfegegeededcagffebggefcfgfffecfgffggfcfcfcffcf
+Acc (AR/GUI): 0.3014 / 0.4658 | Lev: 0.6301 / 0.4658
+
+copatata
+Expected:   dgggaggdfgggagggggggaggefgggaggefgefgefgfedc
+Pred (AR):  dgggaggdfgggaggggggefgegdggegedgefggfgfcgefg
+Pred (GUI): dgggaggdfgggaggggggeegegfggfggfefggffcfffgag
+Acc (AR/GUI): 0.3750 / 0.5625 | Lev: 0.4062 / 0.4375
+
+debboton
+Expected:   cdefgggabCagggfgafeeedefdccc
+Pred (AR):  cdefgggabCagggagggegegfgaeag
+Pred (GUI): cdefgggabCagggagggdgegafffef
+Acc (AR/GUI): 0.3125 / 0.3125 | Lev: 0.6875 / 0.6875
+
+diez_perritos
+Expected:   gggCbagegggCbageefgfedggefgfedcccccc
+Pred (AR):  gggCbagegggCbagegggagagegggagfgeggge
+Pred (GUI): gggCbagegggCbagegggaedgdggfeedccfgff
+Acc (AR/GUI): 0.2917 / 0.5000 | Lev: 0.7083 / 0.4583
+
+don_meliton
+Expected:   gggeegggagffedddfffgegggeeegggaaCbagagfedc
+Pred (AR):  gggeegggagffeddcfcdgbaggfdgefdefgggagfefed
+Pred (GUI): gggeegggagffeddcfcdgedgggggeggeafggefagffe
+Acc (AR/GUI): 0.2333 / 0.3667 | Lev: 0.5667 / 0.5000
+
+donde_estan_las_llaves
+Expected:   efgCbbaaggabCgefgCbbaaggabCgC
+Pred (AR):  efgCbbaaggabCgeffCCbfefefebef
+Pred (GUI): efgCbbaaggabCgeffCCbgefgbagab
+Acc (AR/GUI): 0.3529 / 0.4118 | Lev: 0.6471 / 0.5294
+
+donde_vas_alfonso_doce
+Expected:   cfaacfaagabCbaggabbagaagfgbagf
+Pred (AR):  cfaacfaagabCbfggeagegegeeggaga
+Pred (GUI): cfaacfaagabCbfggbggabagbbggabf
+Acc (AR/GUI): 0.3889 / 0.4444 | Lev: 0.6111 / 0.5000
+
+dongato
+Expected:   afafafedbgbgbCaagfgaaaababafed
+Pred (AR):  afafafedbgbgbgbabagaagfbagfCbb
+Pred (GUI): afafafedbgbgbgbababaagCbagafff
+Acc (AR/GUI): 0.3889 / 0.4444 | Lev: 0.6111 / 0.5556
+
+el_barquito_chiquitito
+Expected:   eaabbCCCbDCbCaeaabbCCCbDCbCaaDDDDaCCCCabbbDCba
+Pred (AR):  eaabbCCCbDCbCCeagCabagfbbafCCbbgbbggbggeeagegg
+Pred (GUI): eaabbCCCbDCbCCeagDggbbCCbabaCDabbaDabagffbagbG
+Acc (AR/GUI): 0.0882 / 0.2353 | Lev: 0.8529 / 0.6765
+
+eran_tres_alpinos
+Expected:   ggagccggggCabbggagddbbbbCbagggagagceeeefedc
+Pred (AR):  ggagccggggCagegggggfgegggagggegegagegegegdg
+Pred (GUI): ggagccggggCagegggggfggggbbbbbbabagfebagaecf
+Acc (AR/GUI): 0.2581 / 0.2903 | Lev: 0.6129 / 0.7097
+
+estaba_una_pastora
+Expected:   ggCbageefagfgeggCbagegggggcc
+Pred (AR):  ggCbageefagfgegggfeeedecgggd
+Pred (GUI): ggCbageefagfgegggfeeeddcgede
+Acc (AR/GUI): 0.4375 / 0.3750 | Lev: 0.5625 / 0.6250
+
+fumfum2
+Expected:   agaCbageagaagaCbageagaggCCCbCCbbCCbbCbCDCbageagaCbageaga
+Pred (AR):  agaCbageagaabagbbaCbbCbbbbfbbbbbbbbbbbabbbbbbbCCCbCbDCDC
+Pred (GUI): agaCbageagaabagbbafagCgfggggbCbbbbCCbabaCDDaeagabagabaga
+Acc (AR/GUI): 0.2500 / 0.3636 | Lev: 0.7500 / 0.4773
+
+hacia_belen_va_una_burra
+Expected:   cffffaCbaggfefgagfefggfefgagfefggabDCbagfcffffaCbaggfefgagfefggfefgagfefggabDCbagfaaCCgaaaCCgaffbbgaffggefaaCCgaaaCCgaffbbgaffggef
+Pred (AR):  cffffaCbaggfedgaagefggfefddgbcgeddccccCggaaaCffgeccCCgagbabageafgagagbgggagdgfgggagggggegfgegfgegfeegdgegfgdgfgggagegegegfgfgagege
+Pred (GUI): cffffaCbaggfedgaegefgfebffgggefeaffgCbagfcCCfebgbagfffegeffefgfeaffdggebedefgagggfbeCgfgaCCCbaCabagaffgbbggefggaafCbbaefbagaffgbbg
+Acc (AR/GUI): 0.2458 / 0.4576 | Lev: 0.6610 / 0.5254
+
+happy_bday_to_you
+Expected:   ccdcfeccdcgfccCafedbbafgf
+Pred (AR):  ccdcfeccdcgfeabagfdedfdgg
+Pred (GUI): ccdcfeccdcgfeabagffaCfCge
+Acc (AR/GUI): 0.2308 / 0.1538 | Lev: 0.7692 / 0.8462
+
+la_cucaracha
+Expected:   gggCEgggCECCbbaaggggbDgggbDGAGFEDCggCCEEGEGAGFEGFDggbbDDFDGAGFEDEC
+Pred (AR):  gggCEgggCECCbgaggCDCbagaagCbgCfbCbfgffbgfedgbageegeaeddgbgbCedgdfg
+Pred (GUI): gggCEgggCECCbgagbCDCbggeggfbggggECDgCCDgGFGAGFEDFaggDCDEEGFEGFEDCg
+Acc (AR/GUI): 0.1111 / 0.4259 | Lev: 0.8889 / 0.5556
+
+la_rana_cucu
+Expected:   gCgagfgegCgagfgegCgagfgegCgagfgegCgagfgegCgagfgegCgagfgegCgagfgegCgagfgegCgagfgegCefedc
+Pred (AR):  gCgagfgegCgagfgegfgegfgegfgegfgegfgegfgegfgegfgegfgegfgegfgegfgegfgegfgegfgegfgegfgegfg
+Pred (GUI): gCgagfgegCgagfgegfgegfgegfgegfgegfgegfgegfgegfgegfgegfgegfgegfgegfgegfgegfgegfgegfgegfc
+Acc (AR/GUI): 0.7067 / 0.7200 | Lev: 0.2933 / 0.2800
+
+la_viudita_del_conde_laurel
+Expected:   gCCDCbgDDEDCEFabagCbabC
+Pred (AR):  gCCDCbgDDEDCEFEgbagegga
+Pred (GUI): gCCDCbgDDEDCEFEgbggbagG
+Acc (AR/GUI): 0.1818 / 0.4545 | Lev: 0.6364 / 0.5455
+
+luna_lunera_cascabelera_2
+Expected:   geagegeageeggeagegeagegeagegeagegeagegeagegeagegeagegeagegeage
+Pred (AR):  geagegeageeggeagfegggagggeggefgfgagegfegefebgggggfegedeefggfgf
+Pred (GUI): geagegeageeggeagfegggegegedgeagegeageagagegegedgeagegeageagage
+Acc (AR/GUI): 0.3000 / 0.7200 | Lev: 0.4600 / 0.2200
+
+mambru2
+Expected:   eaaabCaeeeeeefeceaagabbCbagfeefddecCbCDba
+Pred (AR):  eaaabCaeeeeegdecbgCbbdddgCbbbbbbbabbbbbab
+Pred (GUI): eaaabCaeeeeegdecbgCagfgfbagffgbdfgafCCCab
+Acc (AR/GUI): 0.1034 / 0.2759 | Lev: 0.7586 / 0.6552
+
+mi_granja
+Expected:   ggggggfefgfeffffffedefedgagfedcgagfedc
+Pred (AR):  ggggggfefgfefffffffccfcfcfffffccccggga
+Pred (GUI): ggggggfefgfefffffffcffffcfefedccfedgec
+Acc (AR/GUI): 0.3462 / 0.4615 | Lev: 0.6538 / 0.5000
+
+mibarba
+Expected:   gCggfefddgbggfdeccgCggfefddgbggfdecc
+Pred (AR):  gCggfefddgbggfdeddcefgfcbefedCbCbCde
+Pred (GUI): gCggfefddgbggfdeddceagafeedegggadedc
+Acc (AR/GUI): 0.2500 / 0.4583 | Lev: 0.5833 / 0.4167
+
+o_peuple_fidele
+Expected:   ggdgadbabCbaggfebfgabfeddDDCbCbabgafedggfgagdbbabCbabCbagfgCbagg
+Pred (AR):  ggdgadbabCbaggfebfgCbDCbbgfeggfebgCbbgCbbbCbCbCbCbCbCbCbCagabaga
+Pred (GUI): ggdgadbabCbaggfebfgCbDCbdffbbCbCggagbCbafgfgCggabagfgbbbbCbbbagf
+Acc (AR/GUI): 0.2885 / 0.4423 | Lev: 0.5577 / 0.5577
+
+palmas
+Expected:   ffaffaaaafcccfffafcccdef
+Pred (AR):  ffaffaaaafcccfffffeffdgf
+Pred (GUI): ffaffaaaafcccfffffefccga
+Acc (AR/GUI): 0.5833 / 0.5000 | Lev: 0.4167 / 0.5000
+
+pase_misi_pase_misa
+Expected:   aaaggaaagaagggaagefggeaggefggeag
+Pred (AR):  aaaggaaagaagggaggbgggggggggggegg
+Pred (GUI): aaaggaaagaagggaggbgggefggefggede
+Acc (AR/GUI): 0.6000 / 0.7000 | Lev: 0.4000 / 0.3000
+
+pastora
+Expected:   bbgCbbgbbEGFFCCCDEDCbbEgCbbgbbgCbbgbbEGFFCCCDEDCbbEgCbbg
+Pred (AR):  bbgCbbgbbEGFFCCCbEDCbDECGFCDEDDbbEDCEGFCbEDCbDCbbECFbDDb
+Pred (GUI): bbgCbbgbbEGFFCCCbEDCbDEFGbagCbagbbCbbagbFCCCbEDCbDEFGbag
+Acc (AR/GUI): 0.2727 / 0.6136 | Lev: 0.5227 / 0.3864
+
+patiocas
+Expected:   dgggbggbgbgddgggbggddefgdgagdgggagdggggaaaddefgbbgbbgbbCbagaaafaafaabagfgbbgbbgbbCbagaaafaafaabagfg
+Pred (AR):  dgggbggbgbgddggggggegegeggaggefegedegegeeddegedegedggdgedddcgebegeddbCCddedggCgedggaggfggedegggggeg
+Pred (GUI): dgggbggbgbgddggggggedeggggagbgfeggdgdgggfgegbagCbggdbbbbbdgfagfabagebagfggabgbgbbbbagaabfagCfaffgff
+Acc (AR/GUI): 0.2529 / 0.5402 | Lev: 0.7126 / 0.4483
+
+pavito
+Expected:   cffffcffcfffefgefgggfeeeeeedef
+Pred (AR):  cffffcffcfffefgaffegegaefeggaf
+Pred (GUI): cffffcffcfffefgaffegeggedegcfa
+Acc (AR/GUI): 0.4444 / 0.3889 | Lev: 0.5556 / 0.5556
+
+pimpon
+Expected:   gCgefgggCgefggccefggagfedc
+Pred (AR):  gCgefgggCgefgeegefgggagege
+Pred (GUI): gCgefgggCgefgeegffggaafade
+Acc (AR/GUI): 0.4286 / 0.5000 | Lev: 0.5000 / 0.5000
+
+quellueva
+Expected:   eggaggegggaggegggaggegggaggegegegagegeggaggegggaggegggaggegggaggegegegagegegfedc
+Pred (AR):  eggaggegggaggegggfggeggegegggfgefegfgagdgfegefedgggggfededccfggffefdcedfgfgfeddd
+Pred (GUI): eggaggegggaggegggfggeggggagegegeeggggggegagegegeggggggeegegggfggeggggegegeggeggg
+Acc (AR/GUI): 0.3382 / 0.5882 | Lev: 0.5000 / 0.3235
+
+tengomuneca
+Expected:   gggagecegagfffgfedefdc
+Pred (AR):  gggagecegagfgfgfededgg
+Pred (GUI): gggagecegagfgfgfgfedgf
+Acc (AR/GUI): 0.6000 / 0.4000 | Lev: 0.4000 / 0.5000
+
+un_elefante
+Expected:   ggfeegggfeegggagfefdffeddfffeddggggfedec
+Pred (AR):  ggfeegggfeegggagfegeffefeefggfdcefgefdgf
+Pred (GUI): ggfeegggfeegggagfegecfcfdcfgeddcfcdcdddg
+Acc (AR/GUI): 0.4643 / 0.4643 | Lev: 0.5357 / 0.5357
+
+TOTAL ACCURACY (AR): 0.2998
+TOTAL ACCURACY (GUI): 0.4702
+AVG NORM LEV (AR): 0.6152
+AVG NORM LEV (GUI): 0.5116
+AVG TIME PER NOTE (AR): 0.000130s
+AVG TIME PER NOTE (GUI): 0.000210s
+TOTAL TRAIN TIME: 1955.34s
+AVG EPOCH TIME: 3.9107s

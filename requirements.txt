@@ -3,3 +3,5 @@ tensorflow>=2.15.0
 keras-tuner==1.4.8
 optuna==4.8.0
 matplotlib==3.10.8
+scipy>=1.11.0
+scikit-learn>=1.0.0

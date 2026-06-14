@@ -8,23 +8,29 @@ import pickle
 import numpy as np
 import tensorflow as tf
 import matplotlib.pyplot as plt
+import time
 
 # Ocultar mensajes de información de TensorFlow
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Input, LSTM, Dense, RepeatVector, TimeDistributed
-from tensorflow.keras.callbacks import EarlyStopping
+from tensorflow.keras.callbacks import EarlyStopping, Callback
 from tensorflow.keras.utils import to_categorical
 from tensorflow.keras.optimizers import Adam
 import keras_tuner as kt
 
 # ==========================================
-# 0. CONFIGURACIÓN DE REPRODUCIBILIDAD
+# 0. CONFIGURACIÓN DE REPRODUCIBILIDAD Y RUTAS
 # ==========================================
 SEED = 31
 np.random.seed(SEED)
 tf.random.set_seed(SEED)
+
+MODELS_DIR = '../models'
+PLOTS_DIR = '../results/plots'
+os.makedirs(MODELS_DIR, exist_ok=True)
+os.makedirs(PLOTS_DIR, exist_ok=True)
 
 # ==========================================
 # 1. CARGA Y PREPARACIÓN DE DATOS
@@ -78,86 +84,111 @@ def build_model(hp):
     return model
 
 # ==========================================
-# 3. CONFIGURACIÓN DEL SINTONIZADOR PERSONALIZADO
+# 3. CLASES AUXILIARES Y CALLBACKS
 # ==========================================
-class LSTM_Tuner(kt.RandomSearch):
-    """Subclase de Keras Tuner para inyectar dinámicamente el batch_size."""
+class LSTM_Tuner(kt.BayesianOptimization):
+    """Subclase de Keras Tuner para inyectar dinámicamente el batch_size usando Optimización Bayesiana."""
     def run_trial(self, trial, *args, **kwargs):
         kwargs['batch_size'] = trial.hyperparameters.Choice('batch_size', values=[15, 30, 60])
         return super().run_trial(trial, *args, **kwargs)
 
-safe_dir = os.path.join(os.path.expanduser('~'), 'tuner_results')
+class TimeHistory(Callback):
+    """Callback para monitorizar los tiempos de ejecución del entrenamiento por época."""
+    def on_train_begin(self, logs={}):
+        self.total_start_time = time.time()
+        self.epoch_times = []
 
-tuner = LSTM_Tuner(
-    build_model,
-    objective='loss',
-    max_trials=6,
-    seed=SEED,
-    directory=safe_dir,
-    project_name='lstm_songs',
-    overwrite=True
-)
+    def on_epoch_begin(self, epoch, logs={}):
+        self.epoch_start_time = time.time()
 
-early_stopping = EarlyStopping(
-    monitor='loss',
-    patience=30,
-    min_delta=0,
-    restore_best_weights=True
-)
+    def on_epoch_end(self, epoch, logs={}):
+        self.epoch_times.append(time.time() - self.epoch_start_time)
+        
+    def on_train_end(self, logs={}):
+        self.total_time = time.time() - self.total_start_time
+        self.avg_time = sum(self.epoch_times) / len(self.epoch_times) if self.epoch_times else 0
 
 # ==========================================
-# 4. ENTRENAMIENTO Y BÚSQUEDA
+# 4. CONFIGURACIÓN DEL SINTONIZADOR Y ENTRENAMIENTO
 # ==========================================
-print("--- INICIANDO BÚSQUEDA DE HIPERPARÁMETROS ---")
-tuner.search(X, y, epochs=2000, callbacks=[early_stopping], verbose=1)
+if __name__ == "__main__":
+    safe_dir = os.path.join(os.path.expanduser('~'), 'tuner_results')
 
-best_hps = tuner.get_best_hyperparameters(num_trials=1)[0]
-best_size = best_hps.get('hidden_size')
-best_lr = best_hps.get('learning_rate')
-best_batch = best_hps.get('batch_size')
+    tuner = LSTM_Tuner(
+        build_model,
+        objective='loss',
+        max_trials=15,
+        seed=SEED,
+        directory=safe_dir,
+        project_name='lstm_songs_bayes',
+        overwrite=True
+    )
 
-print("\n-------------------------------------------------")
-print(f"Mejor tamaño LSTM: {best_size}")
-print(f"Mejor Learning Rate: {best_lr}")
-print(f"Mejor Batch Size: {best_batch}")
-print("-------------------------------------------------\n")
+    # Early stopping para evitar entrenar durante demasiadas épocas
+    early_stopping = EarlyStopping(
+        monitor='loss',
+        patience=30,
+        min_delta=0,
+        restore_best_weights=True
+    )
 
-print("Entrenando modelo final optimizado...")
-best_model = tuner.hypermodel.build(best_hps)
-epochs_final = 10000
+    time_callback = TimeHistory()
 
-history = best_model.fit(X, y, epochs=epochs_final, batch_size=best_batch, callbacks=[early_stopping], verbose=1)
+    print("--- INICIANDO BÚSQUEDA DE HIPERPARÁMETROS ---")
+    tuner.search(X, y, epochs=2000, callbacks=[early_stopping], verbose=1)
 
-# ==========================================
-# 5. GUARDADO DE RESULTADOS, MODELO Y METADATOS
-# ==========================================
-lr_str = str(best_lr).replace('.', '')
-base_filename = f"lstm_model_opt_{best_size}_{lr_str}_{best_batch}"
+    best_hps = tuner.get_best_hyperparameters(num_trials=1)[0]
+    best_size = best_hps.get('hidden_size')
+    best_lr = best_hps.get('learning_rate')
+    best_batch = best_hps.get('batch_size')
 
-# Generación y guardado de la gráfica de pérdida
-plt.figure()
-plt.plot(history.history['loss'], label='Training Loss')
-plt.xlabel("Epochs")
-plt.ylabel("Loss")
-plt.legend()
-plt.savefig(f'../results/plots/{base_filename}.png')
-plt.show()
+    print("--- OPTIMIZACIÓN FINALIZADA ---")
+    print(f"Entrenando modelo final con -> H_Size: {best_size}, LR: {best_lr}, Batch: {best_batch}")
 
-best_model.save(f'../models/{base_filename}.keras')
+    best_model = tuner.hypermodel.build(best_hps)
+    epochs_final = 10000
 
-model_data = {
-    'char_to_ix': char_to_ix,
-    'ix_to_char': ix_to_char,
-    'hidden_size': best_size,
-    'vocab_size': vocab_size,
-    'seq_length': seq_length,
-    'pred_length': pred_length,
-    'learning_rate': best_lr,
-    'batch_size': best_batch,
-    'epochs': len(history.history['loss']) # Se guarda la época real donde paró por el EarlyStopping
-}
+    # Añadimos el callback personalizado de tiempo a la lista
+    history = best_model.fit(X, y, epochs=epochs_final, batch_size=best_batch, callbacks=[early_stopping, time_callback], verbose=1)
 
-with open(f'../models/{base_filename}.pkl', 'wb') as f:
-    pickle.dump(model_data, f)
+    print(f"\nEntrenamiento Finalizado. Tiempo Total: {time_callback.total_time:.2f}s | Tiempo Medio/Epoch: {time_callback.avg_time:.4f}s")
 
-print(f"\nModelo, gráfica y metadatos guardados correctamente bajo el prefijo: '{base_filename}'")
+    # ==========================================
+    # 5. GUARDADO DE RESULTADOS, MODELO Y METADATOS
+    # ==========================================
+    lr_str = str(best_lr).replace('.', '')
+    base_filename = f"lstm_opt_{best_size}_{lr_str}_{best_batch}"
+
+    # Generación y guardado de la gráfica de pérdida
+    plt.figure()
+    plt.plot(history.history['loss'], label='Training Loss', color='tab:blue')
+    plt.xlabel("Epochs", fontweight='bold')
+    plt.ylabel("Loss", fontweight='bold')
+    plt.title(f"Curva de Aprendizaje (LSTM)\nH_Size: {best_size} | LR: {best_lr} | Batch: {best_batch}", fontweight='bold')
+    plt.grid(True, linestyle=':', alpha=0.6)
+    plt.legend()
+    plt.tight_layout()
+    plt.savefig(os.path.join(PLOTS_DIR, f"{base_filename}.png"), dpi=300)
+    plt.close()
+
+    best_model.save(os.path.join(MODELS_DIR, f"{base_filename}.keras"))
+
+    model_data = {
+        'char_to_ix': char_to_ix,
+        'ix_to_char': ix_to_char,
+        'hidden_size': best_size,
+        'vocab_size': vocab_size,
+        'seq_length': seq_length,
+        'pred_length': pred_length,
+        'learning_rate': best_lr,
+        'batch_size': best_batch,
+        'epochs': len(history.history['loss']),
+        'epoch_times': time_callback.epoch_times,
+        'total_train_time': time_callback.total_time,
+        'avg_epoch_time': time_callback.avg_time
+    }
+
+    with open(os.path.join(MODELS_DIR, f"{base_filename}.pkl"), 'wb') as f:
+        pickle.dump(model_data, f)
+
+    print(f"\nModelo, gráfica y metadatos guardados correctamente bajo el prefijo: '{base_filename}'")
